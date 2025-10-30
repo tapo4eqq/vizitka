@@ -1,0 +1,663 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    overflow: hidden;
+    padding: 20px;
+    position: relative;
+}
+
+/* Стили для тыкв на фоне */
+.background-pumpkins {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.pumpkin {
+    position: absolute;
+    width: 60px;
+    height: 70px;
+    background: #ff7518;
+    border-radius: 50%;
+    animation: float-pumpkin 20s infinite linear;
+    opacity: 0.1;
+}
+
+.pumpkin::before {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 60px;
+    background: #ff7518;
+    border-radius: 50%;
+    top: 5px;
+    left: 5px;
+    box-shadow: 
+        inset 0 0 0 5px #e65c00,
+        inset 10px 0 0 0 #ff8c42;
+}
+
+.pumpkin::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 10px;
+    background: #2c1a0a;
+    top: 15px;
+    left: 22px;
+    border-radius: 50%;
+    box-shadow: 
+        0 25px 0 #2c1a0a,
+        10px 12px 0 #2c1a0a,
+        -10px 12px 0 #2c1a0a;
+}
+
+/* Стили для пауков на фоне */
+.background-spiders {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.spider {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: #333;
+    border-radius: 50%;
+    animation: float-spider 25s infinite linear;
+    opacity: 0.1;
+}
+
+.spider::before, .spider::after {
+    content: '';
+    position: absolute;
+    background: #333;
+    border-radius: 5px;
+}
+
+.spider::before {
+    width: 40px;
+    height: 5px;
+    top: 15px;
+    left: -5px;
+    box-shadow: 
+        0 -10px 0 #333,
+        0 10px 0 #333;
+}
+
+.spider::after {
+    width: 5px;
+    height: 40px;
+    left: 12px;
+    top: -5px;
+    box-shadow: 
+        -10px 0 0 #333,
+        10px 0 0 #333;
+}
+
+/* Анимации для тыкв и пауков */
+@keyframes float-pumpkin {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(100px, 50px) rotate(90deg);
+    }
+    50% {
+        transform: translate(200px, 0) rotate(180deg);
+    }
+    75% {
+        transform: translate(100px, -50px) rotate(270deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+    }
+}
+
+@keyframes float-spider {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(-100px, 80px) rotate(90deg);
+    }
+    50% {
+        transform: translate(-200px, 0) rotate(180deg);
+    }
+    75% {
+        transform: translate(-100px, -80px) rotate(270deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+    }
+}
+
+.container {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    max-width: 1200px;
+    width: 100%;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.main-card {
+    width: 400px;
+    height: 500px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border: 1px solid rgba(255, 117, 24, 0.2);
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 2;
+    cursor: pointer;
+}
+
+.main-card:hover {
+    transform: translateX(-50px);
+}
+
+.main-card:hover + .extended-card {
+    width: 700px;
+    padding: 40px;
+    opacity: 1;
+}
+
+.extended-card {
+    width: 0;
+    height: 600px;
+    background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+    border: 1px solid rgba(106, 27, 154, 0.2);
+    border-radius: 20px;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+    position: relative;
+}
+
+.logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff7518 0%, #6a1b9a 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 25px rgba(255, 117, 24, 0.4);
+}
+
+.logo::before {
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    background: #1a1a2e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo::after {
+    content: '👻';
+    position: absolute;
+    font-size: 40px;
+    filter: drop-shadow(0 0 10px rgba(255, 117, 24, 0.7));
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, #ff7518, #6a1b9a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.title {
+    font-size: 16px;
+    color: #b0b0b0;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 300;
+}
+
+.divider {
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #ff7518, transparent);
+    margin: 20px 0;
+}
+
+.contact-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: #e0e0e0;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(255, 117, 24, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.skill {
+    padding: 6px 12px;
+    background: rgba(106, 27, 154, 0.2);
+    border-radius: 20px;
+    font-size: 12px;
+    color: #e0e0e0;
+    border: 1px solid rgba(106, 27, 154, 0.4);
+}
+
+.flip-hint {
+    position: absolute;
+    bottom: 20px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    animation: pulse 2s infinite;
+}
+
+.mobile-hint {
+    display: none;
+    position: absolute;
+    bottom: 20px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+.glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: radial-gradient(circle at center, rgba(255, 117, 24, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #ff7518;
+    border-radius: 50%;
+    opacity: 0;
+    animation: float 15s infinite linear;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Стили для расширенной карточки */
+.extended-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    height: 100%;
+}
+
+.extended-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.section-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #ff7518, #6a1b9a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.hobbies-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.hobby-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.hobby-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(106, 27, 154, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    border: 1px solid rgba(106, 27, 154, 0.4);
+}
+
+.hobby-content {
+    flex: 1;
+}
+
+.hobby-title {
+    font-size: 16px;
+    color: #ff7518;
+    margin-bottom: 5px;
+}
+
+.hobby-description {
+    font-size: 13px;
+    color: #b0b0b0;
+    line-height: 1.4;
+}
+
+.about-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.photo-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.user-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+    object-fit: cover;
+    border: 3px solid rgba(255, 117, 24, 0.3);
+    box-shadow: 0 0 20px rgba(255, 117, 24, 0.3);
+}
+
+.about-text {
+    background: rgba(255, 117, 24, 0.05);
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid rgba(255, 117, 24, 0.1);
+}
+
+.about-description {
+    font-size: 14px;
+    color: #e0e0e0;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.education-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.education-item {
+    padding: 15px;
+    background: rgba(106, 27, 154, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(106, 27, 154, 0.1);
+}
+
+.education-title {
+    font-size: 16px;
+    color: #6a1b9a;
+    margin-bottom: 5px;
+}
+
+.education-period {
+    font-size: 12px;
+    color: #b0b0b0;
+    margin-bottom: 8px;
+}
+
+.education-description {
+    font-size: 13px;
+    color: #b0b0b0;
+    line-height: 1.4;
+}
+
+.close-btn {
+    display: none;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    background: rgba(255, 117, 24, 0.2);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 10;
+    border: 1px solid rgba(255, 117, 24, 0.3);
+}
+
+/* Медиа-запросы для мобильных устройств */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+        overflow-y: auto;
+    }
+    
+    .container {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+    
+    .main-card {
+        width: 100%;
+        max-width: 350px;
+        height: auto;
+        min-height: 450px;
+        padding: 25px;
+    }
+    
+    .main-card:hover {
+        transform: none;
+    }
+    
+    .main-card:hover + .extended-card {
+        width: 0;
+        padding: 0;
+        opacity: 0;
+    }
+    
+    .extended-card {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        z-index: 100;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    
+    .extended-card.active {
+        opacity: 1;
+        visibility: visible;
+        width: 100%;
+        padding: 20px;
+    }
+    
+    .extended-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        height: auto;
+        overflow-y: auto;
+        padding-bottom: 60px;
+    }
+    
+    .flip-hint {
+        display: none;
+    }
+    
+    .mobile-hint {
+        display: block;
+    }
+    
+    .close-btn {
+        display: flex;
+    }
+    
+    .user-photo {
+        width: 150px;
+        height: 150px;
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+    
+    .title {
+        font-size: 14px;
+    }
+    
+    .section-title {
+        font-size: 20px;
+    }
+    
+    .logo {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 20px;
+    }
+    
+    .logo::after {
+        font-size: 30px;
+    }
+    
+    .contact-item {
+        font-size: 13px;
+    }
+    
+    .hobby-description, .about-description, .education-description {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-card {
+        max-width: 100%;
+        padding: 20px;
+    }
+    
+    .extended-card.active {
+        padding: 15px;
+    }
+    
+    .user-photo {
+        width: 120px;
+        height: 120px;
+    }
+    
+    h1 {
+        font-size: 22px;
+    }
+    
+    .section-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    
+    .about-text {
+        padding: 15px;
+    }
+}

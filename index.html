@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Хеллоуинская Визитка</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Тыквы на фоне -->
+    <div class="background-pumpkins">
+        <div class="pumpkin"></div>
+        <div class="pumpkin"></div>
+        <div class="pumpkin"></div>
+        <div class="pumpkin"></div>
+        <div class="pumpkin"></div>
+    </div>
+    
+    <!-- Паучки на фоне -->
+    <div class="background-spiders">
+        <div class="spider"></div>
+        <div class="spider"></div>
+        <div class="spider"></div>
+        <div class="spider"></div>
+        <div class="spider"></div>
+    </div>
+    
+    <!-- Основной контейнер -->
+    <div class="container">
+        <!-- Основная карточка -->
+        <div class="main-card">
+            <div class="glow"></div>
+            <div class="particles" id="particles-front"></div>
+            
+            <div class="logo"></div>
+            <h1>Михаил Киселёв</h1>
+            <div class="title">ВЕБ-разработчик и всякого прочего</div>
+            
+            <div class="divider"></div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="icon">📧</div>
+                    <span>tapoekkiselev@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <div class="icon">📱</div>
+                    <span>+7 (962) 910-91-44</span>
+                </div>
+                <div class="contact-item">
+                    <div class="icon">🌐</div>
+                    <span>https://t.me/magnoliagod</span>
+                </div>
+            </div>
+            
+            <div class="skills">
+                <div class="skill">Дизайн</div>
+                <div class="skill">Визуализация</div>
+                <div class="skill">Футуристика</div>
+                <div class="skill">AR/VR</div>
+            </div>
+            
+            <div class="flip-hint">Наведите для подробной информации</div>
+            <div class="mobile-hint">Нажмите для подробной информации</div>
+        </div>
+        
+        <!-- Расширенная карточка -->
+        <div class="extended-card">
+            <div class="glow"></div>
+            <div class="particles" id="particles-back"></div>
+            
+            <div class="extended-content">
+                <div class="extended-section">
+                    <h2 class="section-title">Увлечения & Хобби</h2>
+                    <div class="hobbies-container">
+                        <div class="hobby-item">
+                            <div class="hobby-icon">🎮</div>
+                            <div class="hobby-content">
+                                <div class="hobby-title">Разработка игр</div>
+                                <div class="hobby-description">Мечтаю создавать инди-игры с футуристическим сеттингом и хоррор-элементами на Unreal Engine.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="hobby-item">
+                            <div class="hobby-icon">🎮</div>
+                            <div class="hobby-content">
+                                <div class="hobby-title">Компьютерные игры</div>
+                                <div class="hobby-description">Люблю проводить время за компьютером. Играю в такие игры как CS и одиночные синглы.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="hobby-item">
+                            <div class="hobby-icon">⚽</div>
+                            <div class="hobby-content">
+                                <div class="hobby-title">Занимаюсь футболом</div>
+                                <div class="hobby-description">Всю свою жизнь занимаюсь спортом, очень люблю играть в футбол, также играл за команду своего города.</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2 class="section-title" style="margin-top: 30px;">Образование</h2>
+                    <div class="education-container">
+                        <div class="education-item">
+                            <div class="education-title">Я бездарь</div>
+                            <div class="education-period">2007-Н.В</div>
+                            <div class="education-description">НО! Постоянно учусь новому</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="extended-section">
+                    <h2 class="section-title">О себе</h2>
+                    <div class="about-container">
+                        <div class="photo-container">
+                            <!-- ПРОСТО ВСТАВЬТЕ СВОЮ ФОТОГРАФИЮ ЗДЕСЬ -->
+                            <img src="pic/ya.jpg" alt="Мое фото" class="user-photo">
+                            <!-- ЗАМЕНИТЕ "your-photo.jpg" на путь к вашей фотографии -->
+                        </div>
+                        <div class="about-text">
+                            <div class="about-description">
+                                Меня зовут миша, обучаюсь на веб-разработчика, вчера, а именно 30 октября 2025 года мне исполнилось 18 лет.
+                                <br><br>
+                                В свободное время занимаюсь спортом, и играю в cs. 
+                                !
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="close-btn">✕</div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
